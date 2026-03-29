@@ -7,6 +7,7 @@
   "dependencies": {
     "@react-three/drei": "10.2.0",
     "@react-three/fiber": "9.1.2",
+    "@studio-freight/lenis": "^1.0.42",
     "postprocessing": "^6.37.6",
     "react": "19.1.0",
     "react-dom": "19.1.0",
