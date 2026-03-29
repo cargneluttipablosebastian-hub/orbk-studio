@@ -19,7 +19,7 @@ function Scene() {
 export default function App() {
   return (
     <Canvas
-      dpr={[1, 1.5]}
+      dpr={[1, 2]}
       camera={{ position: [0, 0, 5], near: 0.1, far: 30, fov: 75 }}
       gl={{
         powerPreference: "high-performance",

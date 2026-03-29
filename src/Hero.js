@@ -10,6 +10,8 @@ import { floorFragmentShader, floorVertexShader } from './floorShader'
 const INSTANCES_COUNT = 3000;
 
 function Hero() {
+    const { viewport } = useThree()
+    const responsiveScale = viewport.width < 5 ? 0.6 : 1
     const [width, height] = useThree((state) => [state.size.width, state.size.height]);
     const dpr = useThree((state) => state.viewport.dpr);
     
@@ -193,7 +195,7 @@ function Hero() {
                 shadow-bias={-0.0001}
                 shadow-mapSize={[1024, 1024]}
             />
-            <mesh renderOrder={-1} >
+            <mesh renderOrder={-1} scale={responsiveScale}>
                 <sphereGeometry args={[1.5, 32, 32]} />
                 <meshBasicMaterial color="#111" />
             </mesh>
@@ -204,6 +206,7 @@ function Hero() {
                 receiveShadow
                 castShadow
                 onAfterRender={onAfterRender}
+                scale={responsiveScale}
             >
                 <shaderMaterial
                     vertexShader={heroVertexShader}
@@ -229,7 +232,7 @@ function Hero() {
                 lights={true}
             />
 
-            <group>
+            <group scale={responsiveScale}>
                 <mesh ref={sphere1Ref} renderOrder={1} receiveShadow geometry={sphereGeometry} material={sphereMaterial} />
                 <mesh ref={sphere2Ref} renderOrder={1} receiveShadow geometry={sphereGeometry} material={sphereMaterial} />
                 <mesh ref={sphere3Ref} renderOrder={1} receiveShadow geometry={sphereGeometry} material={sphereMaterial} />
